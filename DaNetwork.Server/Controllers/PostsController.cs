@@ -12,5 +12,23 @@ namespace DaNetwork.Server.Controllers
         private readonly CommentsService _serviceComm;
         private readonly PostsService _servicePost; 
         private readonly LikesService _serviceLike;
+
+    public PostsController(AccountService serviceAcct, CommentsService serviceComm, PostsService servicePost, LikesService serviceLike)
+    {
+      _serviceAcct = serviceAcct;
+      _serviceComm = serviceComm;
+      _servicePost = servicePost;
+      _serviceLike = serviceLike;
     }
+
+
+
+
+
+
+
+
+
+    
+  }
 }
