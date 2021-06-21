@@ -53,6 +53,20 @@ namespace DaNetwork.Server.Controllers
             }
         }
 
+        [HttpGet("{id}/likes")]
+        public ActionResult<Like> GetLikesByProfileId(string id)
+        {
+            try
+            {
+                IEnumerable<Like> likes = _serviceLike.GetLikesByProfileId(id);
+                return Ok(likes);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
 
 
 
