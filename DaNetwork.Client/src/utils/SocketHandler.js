@@ -1,5 +1,6 @@
 import { logger } from './Logger.js'
 import { baseURL } from '../env.js'
+import io from 'socket.io-client'
 
 let connected = false
 let queue = []
