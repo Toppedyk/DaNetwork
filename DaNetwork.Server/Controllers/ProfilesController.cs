@@ -1,3 +1,5 @@
+using System;
+using DaNetwork.Server.Models;
 using DaNetwork.Server.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +15,27 @@ namespace DaNetwork.Server.Controllers
         private readonly CommentsService _serviceComm;
         private readonly PostsService _servicePost; 
         private readonly LikesService _serviceLike;
-        
-        
+
+    public ProfilesController(AccountService serviceAcct, CommentsService serviceComm, PostsService servicePost, LikesService serviceLike)
+    {
+      _serviceAcct = serviceAcct;
+      _serviceComm = serviceComm;
+      _servicePost = servicePost;
+      _serviceLike = serviceLike;
     }
+
+            [HttpGet("{id}")]
+        public ActionResult<Profile> GetProfileById(string id)
+        {
+            try
+            {
+                Profile profile = _serviceAcct.GetProfileById(id);
+                return Ok(profile);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+  }
 }
