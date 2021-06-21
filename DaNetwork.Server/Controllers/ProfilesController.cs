@@ -54,7 +54,7 @@ namespace DaNetwork.Server.Controllers
         }
 
         [HttpGet("{id}/likes")]
-        public ActionResult<Like> GetLikesByProfileId(string id)
+        public ActionResult<IEnumerable<Like>> GetLikesByProfileId(string id)
         {
             try
             {
@@ -66,6 +66,21 @@ namespace DaNetwork.Server.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("{id}/comments")]
+        public ActionResult<IEnumerable<Comment>> GetCommentsByProfileId(string id)
+        {
+            try
+            {
+                IEnumerable<Comment> comments = _serviceComm.GetCommentsByProfileId(id);
+                return Ok(comments);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
 
 
 
