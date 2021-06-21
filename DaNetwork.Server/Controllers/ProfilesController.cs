@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DaNetwork.Server.Models;
 using DaNetwork.Server.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace DaNetwork.Server.Controllers
       _serviceLike = serviceLike;
     }
 
-            [HttpGet("{id}")]
+        [HttpGet("{id}")]
         public ActionResult<Profile> GetProfileById(string id)
         {
             try
@@ -37,5 +38,26 @@ namespace DaNetwork.Server.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("{id}/posts")]
+        public ActionResult<IEnumerable<Post>> GetPostsByProfileId(string id)
+        {
+            try
+            {
+                IEnumerable<Post> posts = _servicePost.GetPostsByProfileId(id);
+                return Ok(posts);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+
+
+
+
+
   }
 }
