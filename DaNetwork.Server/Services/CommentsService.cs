@@ -10,5 +10,10 @@ namespace DaNetwork.Server.Services
     {
       throw new NotImplementedException();
     }
+
+    internal IEnumerable<Comment> GetCommentsByPostId(int id)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

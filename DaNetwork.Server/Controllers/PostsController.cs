@@ -56,6 +56,18 @@ namespace DaNetwork.Server.Controllers
     }
 
     [HttpGet("{id}/comments")]
+    public ActionResult<IEnumerable<Comment>> GetCommentsByPostId(int id)
+    {
+      try
+      {
+          IEnumerable<Comment> comments = _serviceComm.GetCommentsByPostId(id);
+          return Ok(comments);
+      }
+      catch (Exception e)
+      {
+          return BadRequest(e.Message);
+      }
+    }
 
 
     [HttpPost]
