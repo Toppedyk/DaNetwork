@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using DaNetwork.Server.Models;
 using DaNetwork.Server.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,8 +24,19 @@ namespace DaNetwork.Server.Controllers
       _serviceLike = serviceLike;
     }
 
-
-
+    [HttpGet]
+    public ActionResult<IEnumerable<Post>> GetAllPosts()
+    {
+      try
+      {
+          IEnumerable<Post> posts = _servicePost.GetAllPosts();
+          return Ok(posts);
+      }
+      catch (Exception e)
+      {
+          return BadRequest(e.Message);
+      }
+    }
 
 
 
