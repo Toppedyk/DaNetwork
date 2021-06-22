@@ -69,6 +69,20 @@ namespace DaNetwork.Server.Controllers
       }
     }
 
+    [HttpGet("{id}/likes")]
+    public ActionResult<IEnumerable<Like>> GetLikesByPostId(int id)
+    {
+      try
+      {
+          IEnumerable<Like> likes = _serviceLike.GetLikesByPostId(id);
+          return Ok(likes);
+      }
+      catch (Exception e)
+      {
+          return BadRequest(e.Message);
+      }
+    }
+
 
     [HttpPost]
     [Authorize]
