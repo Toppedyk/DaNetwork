@@ -41,7 +41,7 @@ namespace DaNetwork.Server.Controllers
       }
     }
 
-    [HttpGet("id")]
+    [HttpGet("{id}")]
     public ActionResult<Post> GetPostById(int id)
     {
       try
@@ -54,6 +54,9 @@ namespace DaNetwork.Server.Controllers
           return BadRequest(e.Message);
       }
     }
+
+    [HttpGet("{id}/comments")]
+
 
     [HttpPost]
     [Authorize]
@@ -74,7 +77,7 @@ namespace DaNetwork.Server.Controllers
       }
     }
 
-    [HttpDelete("id")]
+    [HttpDelete("{id}")]
     [Authorize]
     public async Task<ActionResult<string>> DeletePost(int id)
     {
@@ -90,7 +93,7 @@ namespace DaNetwork.Server.Controllers
       }
     }
 
-    [HttpPut("id")]
+    [HttpPut("{id}")]
     [Authorize]
     public async Task<ActionResult<Post>> UpdatePost(int id, [FromBody] Post p)
     {
