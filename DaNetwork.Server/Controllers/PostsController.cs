@@ -38,6 +38,20 @@ namespace DaNetwork.Server.Controllers
       }
     }
 
+    [HttpGet("id")]
+    public ActionResult<Post> GetPostById(int id)
+    {
+      try
+      {
+          Post post = _servicePost.GetPostById(id);
+          return Ok(post);
+      }
+      catch (Exception e)
+      {
+          return BadRequest(e.Message);
+      }
+    }
+
 
 
 

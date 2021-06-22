@@ -15,5 +15,10 @@ namespace DaNetwork.Server.Services
     {
       throw new NotImplementedException();
     }
+
+    internal Post GetPostById(int id)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
