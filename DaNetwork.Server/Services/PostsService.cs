@@ -25,5 +25,10 @@ namespace DaNetwork.Server.Services
     {
       throw new NotImplementedException();
     }
+
+    internal void DeletePost(int id1, string id2)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

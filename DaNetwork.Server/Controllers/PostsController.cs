@@ -74,7 +74,21 @@ namespace DaNetwork.Server.Controllers
       }
     }
 
-
+    [HttpDelete("id")]
+    [Authorize]
+    public async Task<ActionResult<string>> DeletePost(int id)
+    {
+      try
+      {
+          Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+          _servicePost.DeletePost(id, userInfo.Id);
+          return Ok("Successfully Deleted");
+      }
+      catch (Exception e)
+      {
+          return BadRequest(e.Message);
+      }
+    }
 
 
 
