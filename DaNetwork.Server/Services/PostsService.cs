@@ -30,5 +30,10 @@ namespace DaNetwork.Server.Services
     {
       throw new NotImplementedException();
     }
+
+    internal Post UpdatePost(Post p, string id)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

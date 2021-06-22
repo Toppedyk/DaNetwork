@@ -90,6 +90,29 @@ namespace DaNetwork.Server.Controllers
       }
     }
 
+    [HttpPut("id")]
+    [Authorize]
+    public async Task<ActionResult<Post>> UpdatePost(int id, [FromBody] Post p)
+    {
+      try
+      {
+          Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+          p.Id = id;
+          Post post = _servicePost.UpdatePost(p, userInfo.Id);
+          post.Creator = userInfo;
+          return Ok(post);
+      }
+      catch (Exception e)
+      {
+          return BadRequest(e.Message);
+      }
+    }
+
+
+
+
+
+
 
 
 
