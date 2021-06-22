@@ -11,5 +11,7 @@ namespace DaNetwork.Server.Models
         public string ImgUrl { get; set; }
         public int Likes { get; set; }
         public string CreatorId { get; set; }
+
+        public Profile Creator { get; set; }
     }
 }

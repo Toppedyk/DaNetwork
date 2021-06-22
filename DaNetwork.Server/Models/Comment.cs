@@ -6,5 +6,7 @@ namespace DaNetwork.Server.Models
         public int PostId { get; set; }
         public string CreatorId { get; set; }
         public string Body { get; set; }
+
+        public Profile Creator { get; set; }
     }
 }
