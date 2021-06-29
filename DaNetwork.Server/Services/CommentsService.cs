@@ -30,5 +30,10 @@ namespace DaNetwork.Server.Services
     {
       throw new NotImplementedException();
     }
+
+    internal void DeleteComment(int id1, string id2)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
