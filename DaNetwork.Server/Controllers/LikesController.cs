@@ -1,8 +1,16 @@
+using System;
+using System.Threading.Tasks;
+using CodeWorks.Auth0Provider;
+using DaNetwork.Server.Models;
 using DaNetwork.Server.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DaNetwork.Server.Controllers
 {
+
+    [ApiController]
+    [Route("api/[controller]")]
     public class LikesController : ControllerBase
     {
         private readonly AccountService _serviceAcct;
@@ -17,5 +25,31 @@ namespace DaNetwork.Server.Controllers
       _servicePost = servicePost;
       _serviceLike = serviceLike;
     }
+ 
+// NOTE Review this logic with someone
+    [HttpPost]
+    [Authorize]
+    public async Task<ActionResult<Like>> CreateLike([FromBody] Like l)
+    {
+        try
+        {
+            Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+            l.CreatorId = userInfo.Id;
+            Like like = _serviceLike.CreateOrDeleteLike(l);
+            return Ok(like);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+
+
+
+
+
+
+
   }
 }

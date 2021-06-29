@@ -15,5 +15,10 @@ namespace DaNetwork.Server.Services
     {
       throw new NotImplementedException();
     }
+
+    internal Like CreateOrDeleteLike(Like l)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
