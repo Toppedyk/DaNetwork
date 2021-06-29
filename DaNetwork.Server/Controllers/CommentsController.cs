@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using CodeWorks.Auth0Provider;
 using DaNetwork.Server.Models;
 using DaNetwork.Server.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DaNetwork.Server.Controllers
@@ -52,6 +55,24 @@ namespace DaNetwork.Server.Controllers
       }
     }
 
+    [HttpPost]
+    [Authorize]
+    public async Task<ActionResult<Comment>> CreateComment([FromBody] Comment c)
+    {
+      try
+      {
+          Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+          c.CreatorId = userInfo.Id;
+
+          Comment comment = _serviceComm.CreateComment(c);
+          comment.Creator = userInfo;
+          return Ok(comment);
+      }
+      catch (Exception e)
+      {
+          return BadRequest(e.Message);
+      }
+    }
 
 
 

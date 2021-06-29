@@ -25,5 +25,10 @@ namespace DaNetwork.Server.Services
     {
       throw new NotImplementedException();
     }
+
+    internal Comment CreateComment(Comment c)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
