@@ -43,12 +43,12 @@ namespace DaNetwork.Server.Controllers
     {
       try
       {
-          
+          Comment comment = _serviceComm.GetCommentById(id);
+          return Ok(comment);
       }
-      catch (System.Exception)
+      catch (Exception e)
       {
-          
-          throw;
+          return BadRequest(e.Message);
       }
     }
 
