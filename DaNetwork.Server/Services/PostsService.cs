@@ -38,9 +38,13 @@ namespace DaNetwork.Server.Services
       return _repo.CreatePost(p);
     }
 
-    internal void DeletePost(int id1, string id2)
+    internal void DeletePost(int postId, string creatorId)
     {
-      throw new NotImplementedException();
+      Post post = GetPostById(postId);
+      if(post.CreatorId != creatorId){
+        throw new Exception("You cannot delete another users post");
+      }
+      _repo.DeletePost(postId);
     }
 
     internal Post UpdatePost(Post p, string id)

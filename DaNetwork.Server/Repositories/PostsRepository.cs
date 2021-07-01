@@ -25,5 +25,10 @@ namespace DaNetwork.Server.Repositories
     {
       throw new NotImplementedException();
     }
+
+    internal void DeletePost(int postId)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
