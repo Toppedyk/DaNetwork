@@ -21,7 +21,6 @@ namespace DaNetwork.Server.Services
 
     internal IEnumerable<Comment> GetCommentsByPostId(int id)
     {
-      // Get post by id first?
       return _repo.GetCommentsByPostId(id);
     }
 
@@ -32,7 +31,11 @@ namespace DaNetwork.Server.Services
 
     internal Comment GetCommentById(int id)
     {
-      throw new NotImplementedException();
+      Comment comment = _repo.GetCommentById(id);
+      if(comment == null){
+        throw new Exception("Invalid Id");
+      }
+      return comment;
     }
 
     internal Comment CreateComment(Comment c)

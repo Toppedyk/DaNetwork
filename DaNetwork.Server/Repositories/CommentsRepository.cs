@@ -20,5 +20,10 @@ namespace DaNetwork.Server.Repositories
     {
       throw new NotImplementedException();
     }
+
+    internal Comment GetCommentById(int id)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
