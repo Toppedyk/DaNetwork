@@ -16,12 +16,13 @@ namespace DaNetwork.Server.Services
 
     internal IEnumerable<Comment> GetCommentsByProfileId(string id)
     {
-      throw new NotImplementedException();
+      return _repo.GetCommentsByProfileId(id);
     }
 
     internal IEnumerable<Comment> GetCommentsByPostId(int id)
     {
-      throw new NotImplementedException();
+      // Get post by id first?
+      return _repo.GetCommentsByPostId(id);
     }
 
     internal IEnumerable<Comment> GetAllComments()
