@@ -1,11 +1,19 @@
 using System;
 using System.Collections.Generic;
 using DaNetwork.Server.Models;
+using DaNetwork.Server.Repositories;
 
 namespace DaNetwork.Server.Services
 {
   public class CommentsService
   {
+    private readonly CommentsRepository _repo;
+
+    public CommentsService(CommentsRepository repo)
+    {
+      _repo = repo;
+    }
+
     internal IEnumerable<Comment> GetCommentsByProfileId(string id)
     {
       throw new NotImplementedException();
@@ -18,7 +26,7 @@ namespace DaNetwork.Server.Services
 
     internal IEnumerable<Comment> GetAllComments()
     {
-      throw new NotImplementedException();
+      return _repo.GetAllComments();
     }
 
     internal Comment GetCommentById(int id)
