@@ -60,6 +60,10 @@ namespace DaNetwork.Server.Controllers
     {
       try
       {
+          Post post = _servicePost.GetPostById(id);
+          if(post == null){
+            return BadRequest("Invalid Id");
+          }
           IEnumerable<Comment> comments = _serviceComm.GetCommentsByPostId(id);
           return Ok(comments);
       }
