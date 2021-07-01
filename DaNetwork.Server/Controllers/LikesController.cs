@@ -35,7 +35,6 @@ namespace DaNetwork.Server.Controllers
         {
             Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
             return Ok(_serviceLike.CreateOrDeleteLike(postId, userInfo.Id));
-
         }
         catch (Exception e)
         {
