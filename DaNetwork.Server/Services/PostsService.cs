@@ -26,7 +26,11 @@ namespace DaNetwork.Server.Services
 
     internal Post GetPostById(int id)
     {
-      throw new NotImplementedException();
+      Post post = _repo.getPostById(id);
+      if(post== null){
+        throw new Exception("Invalid ID");
+      }
+      return post;
     }
 
     internal Post CreatePost(Post p)

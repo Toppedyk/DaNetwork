@@ -15,5 +15,10 @@ namespace DaNetwork.Server.Repositories
     {
       throw new NotImplementedException();
     }
+
+    internal Post getPostById(int id)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
