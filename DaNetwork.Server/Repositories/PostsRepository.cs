@@ -30,5 +30,10 @@ namespace DaNetwork.Server.Repositories
     {
       throw new NotImplementedException();
     }
+
+    internal Post UpdatePost(Post post)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

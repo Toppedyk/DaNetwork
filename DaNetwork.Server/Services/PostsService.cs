@@ -49,7 +49,14 @@ namespace DaNetwork.Server.Services
 
     internal Post UpdatePost(Post p, string id)
     {
-      throw new NotImplementedException();
+      Post post = GetPostById(p.Id);
+      if(id != p.CreatorId){
+        throw new Exception("You cannot edit this!");
+      }
+      post.Body = p.Body.Length > 0 ? p.Body : post.Body;
+      post.ImgUrl = p.ImgUrl.Length > 0 ? p.ImgUrl : post.ImgUrl;
+      post.Likes=post.Likes;
+      return _repo.UpdatePost(post);
     }
   }
 }
