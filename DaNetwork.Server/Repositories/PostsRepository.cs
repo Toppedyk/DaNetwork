@@ -10,5 +10,10 @@ namespace DaNetwork.Server.Repositories
     {
       throw new NotImplementedException();
     }
+
+    internal IEnumerable<Post> GetPostsByProfileId(string id)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

@@ -16,7 +16,7 @@ namespace DaNetwork.Server.Services
 
     internal IEnumerable<Post> GetPostsByProfileId(string id)
     {
-      throw new NotImplementedException();
+      return _repo.GetPostsByProfileId(id);
     }
 
     internal IEnumerable<Post> GetAllPosts()
