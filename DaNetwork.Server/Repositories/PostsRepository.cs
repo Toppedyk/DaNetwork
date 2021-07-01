@@ -20,5 +20,10 @@ namespace DaNetwork.Server.Repositories
     {
       throw new NotImplementedException();
     }
+
+    internal Post CreatePost(Post p)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

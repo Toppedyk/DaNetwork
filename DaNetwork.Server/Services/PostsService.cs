@@ -35,7 +35,7 @@ namespace DaNetwork.Server.Services
 
     internal Post CreatePost(Post p)
     {
-      throw new NotImplementedException();
+      return _repo.CreatePost(p);
     }
 
     internal void DeletePost(int id1, string id2)
