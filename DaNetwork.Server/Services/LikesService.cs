@@ -16,7 +16,7 @@ namespace DaNetwork.Server.Services
       throw new NotImplementedException();
     }
 
-    internal Like CreateOrDeleteLike(Like l)
+    internal object CreateOrDeleteLike(int postId, string id)
     {
       throw new NotImplementedException();
     }

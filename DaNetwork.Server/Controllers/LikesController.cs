@@ -27,16 +27,15 @@ namespace DaNetwork.Server.Controllers
     }
  
 // NOTE Review this logic with someone
-    [HttpPost]
+    [HttpGet]
     [Authorize]
-    public async Task<ActionResult<Like>> CreateLike([FromBody] Like l)
+    public async Task<ActionResult<Like>> DeleteOrCreateLike(int postId)
     {
         try
         {
             Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
-            l.CreatorId = userInfo.Id;
-            Like like = _serviceLike.CreateOrDeleteLike(l);
-            return Ok(like);
+            return Ok(_serviceLike.CreateOrDeleteLike(postId, userInfo.Id));
+
         }
         catch (Exception e)
         {
