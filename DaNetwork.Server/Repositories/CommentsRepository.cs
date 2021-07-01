@@ -25,5 +25,15 @@ namespace DaNetwork.Server.Repositories
     {
       throw new NotImplementedException();
     }
+
+    internal Comment CreateComment(Comment c)
+    {
+      throw new NotImplementedException();
+    }
+
+    internal void DeleteComment(int commentId)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

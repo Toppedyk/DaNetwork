@@ -40,12 +40,16 @@ namespace DaNetwork.Server.Services
 
     internal Comment CreateComment(Comment c)
     {
-      throw new NotImplementedException();
+      return _repo.CreateComment(c);
     }
 
-    internal void DeleteComment(int id1, string id2)
+    internal void DeleteComment(int commentId, string userId)
     {
-      throw new NotImplementedException();
+      Comment comment = GetCommentById(commentId);
+      if(comment.CreatorId != userId){
+        throw new Exception("You cannot delte this!");
+      }
+      _repo.DeleteComment(commentId);
     }
   }
 }
