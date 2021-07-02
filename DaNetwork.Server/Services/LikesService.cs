@@ -24,9 +24,12 @@ public LikesService(LikesRepository repo)
       return _repo.GetLikesByPostId(id);
     }
 
-    internal object CreateOrDeleteLike(int postId, string id)
-    {
-      throw new NotImplementedException();
-    }
+    // internal object CreateOrDeleteLike(int postId, string id)
+    // {
+    //   // get profile likes to know if you increment or decrement likes
+    //   IEnumerable<Like> profileLikes = GetLikesByProfileId(id);
+    //   // if array includes postid, decrement
+
+    // }
   }
 }
