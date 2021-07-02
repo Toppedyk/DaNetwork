@@ -10,5 +10,10 @@ namespace DaNetwork.Server.Repositories
     {
       throw new NotImplementedException();
     }
+
+    internal IEnumerable<Like> GetLikesByPostId(int id)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

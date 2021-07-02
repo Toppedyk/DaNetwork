@@ -21,7 +21,7 @@ public LikesService(LikesRepository repo)
 
     internal IEnumerable<Like> GetLikesByPostId(int id)
     {
-      throw new NotImplementedException();
+      return _repo.GetLikesByPostId(id);
     }
 
     internal object CreateOrDeleteLike(int postId, string id)
