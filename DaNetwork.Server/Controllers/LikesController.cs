@@ -26,21 +26,21 @@ namespace DaNetwork.Server.Controllers
       _serviceLike = serviceLike;
     }
  
-// NOTE Review this logic with someone
-    [HttpGet]
-    [Authorize]
-    public async Task<ActionResult<Like>> DeleteOrCreateLike(int postId)
-    {
-        try
-        {
-            Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
-            return Ok(_serviceLike.CreateOrDeleteLike(postId, userInfo.Id));
-        }
-        catch (Exception e)
-        {
-            return BadRequest(e.Message);
-        }
-    }
+// // NOTE Review this logic with someone
+//     [HttpGet]
+//     [Authorize]
+//     public async Task<ActionResult<Like>> DeleteOrCreateLike(int postId)
+//     {
+//         try
+//         {
+//             Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+//             return Ok(_serviceLike.CreateOrDeleteLike(postId, userInfo.Id));
+//         }
+//         catch (Exception e)
+//         {
+//             return BadRequest(e.Message);
+//         }
+//     }
 
 
 
