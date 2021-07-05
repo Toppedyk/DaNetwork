@@ -63,7 +63,13 @@ namespace DaNetwork.Server.Repositories
 
     internal Post CreatePost(Post p)
     {
-      throw new NotImplementedException();
+      string sql = @"
+      INSERT INTO 
+      posts(body, imgUrl, likes)
+      VALUES(@Body, @ImgUrl, @Likes);
+      SELECT LAST_INSERT_ID();";
+      p.Id = _db.ExecuteScalar<int>(sql,p);
+      return p;
     }
 
     internal void DeletePost(int postId)
