@@ -74,7 +74,8 @@ namespace DaNetwork.Server.Repositories
 
     internal void DeletePost(int postId)
     {
-      throw new NotImplementedException();
+      string sql = @"DELETE FROM posts WHERE id = @id LIMIT 1;";
+      _db.Execute(sql, new{postId});
     }
 
     internal Post UpdatePost(Post post)
