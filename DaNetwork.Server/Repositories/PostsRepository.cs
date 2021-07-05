@@ -33,7 +33,17 @@ namespace DaNetwork.Server.Repositories
 
     internal IEnumerable<Post> GetPostsByProfileId(string id)
     {
-      throw new NotImplementedException();
+      string sql = @"
+      SELECT 
+      p.*,
+      a.*
+      FROM posts p
+      JOIN accounts a ON a.id = p.creatorId
+      where k.creatorId = @id;";
+      return _db.Query<Post, Profile,Post>(sql,(p,a)=>{
+        p.Creator = a;
+        return p;
+      }, new {id}).ToList();
     }
 
     internal Post getPostById(int id)
