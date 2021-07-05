@@ -1,14 +1,34 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using DaNetwork.Server.Models;
+using Dapper;
 
 namespace DaNetwork.Server.Repositories
 {
   public class PostsRepository
   {
+
+    private readonly IDbConnection _db;
+
+    public PostsRepository(IDbConnection db)
+    {
+      _db = db;
+    }
+
     internal IEnumerable<Post> GetAllPosts()
     {
-      throw new NotImplementedException();
+      string sql = @"
+      SELECT
+      p*,
+      a*
+      FROM posts p
+      JOIN accounts a ON a.id = p.creatorId;";
+      return _db.Query<Post, Profile, Post>(sql,(p,a)=>{
+        p.Creator = a;
+        return p;
+      },splitOn: "id").ToList();
     }
 
     internal IEnumerable<Post> GetPostsByProfileId(string id)
