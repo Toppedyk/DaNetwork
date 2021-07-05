@@ -38,7 +38,17 @@ namespace DaNetwork.Server.Repositories
 
     internal Post getPostById(int id)
     {
-      throw new NotImplementedException();
+      string sql=@"
+      SELECT 
+      p.*,
+      a.*
+      FROM posts p
+      JOIN accounts a ON a.id = p.creatorId
+      WHERE p.id = @id;";
+      return _db.Query<Post, Profile, Post>(sql,(p,a)=>{
+        p.Creator = a;
+        return p;
+      }, new {id}).FirstOrDefault();
     }
 
     internal Post CreatePost(Post p)
