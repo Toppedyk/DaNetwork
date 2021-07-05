@@ -80,7 +80,16 @@ namespace DaNetwork.Server.Repositories
 
     internal Post UpdatePost(Post post)
     {
-      throw new NotImplementedException();
+      string sql=@"
+      UPDATE posts
+      SET
+      body = @Body,
+      imgUrl = @ImgUrl,
+      likes=@Likes,
+      creatorId=@CreatorId
+      WHERE id = @Id;";
+      _db.Execute(sql, post);
+      return post;
     }
   }
 }
