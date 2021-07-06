@@ -79,7 +79,13 @@ namespace DaNetwork.Server.Repositories
 
     internal Comment CreateComment(Comment c)
     {
-      throw new NotImplementedException();
+      string sql=@"
+      INSERT INTO
+      comments(postId, creatorId, body)
+      VALUES(@PostId, @CreatorId, @Body);
+      SELECT LAST_INSERT_ID();";
+      c.Id = _db.ExecuteScalar<int>(sql,c);
+      return c;
     }
 
     internal void DeleteComment(int commentId)
