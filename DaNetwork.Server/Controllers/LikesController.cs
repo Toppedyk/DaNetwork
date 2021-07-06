@@ -29,7 +29,8 @@ namespace DaNetwork.Server.Controllers
 
     [HttpPost]
     [Authorize]
-    public async Task<ActionResult<Like>> CreateLike([FromBody] Like l){
+    public async Task<ActionResult<Like>> CreateLike([FromBody] Like l)
+    {
       try
       {
           Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
@@ -37,6 +38,22 @@ namespace DaNetwork.Server.Controllers
 
           Like like = _serviceLike.CreateLike(l);
           return Ok(like);
+      }
+      catch (Exception e)
+      {
+          return BadRequest(e.Message);
+      }
+    }
+
+    [HttpDelete("{id}")]
+    [Authorize]
+    public async Task<ActionResult<String>> DeleteLike(int id)
+    {
+      try
+      {
+          Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+          _serviceLike.DeleteLike(id, userInfo.Id);
+          return Ok("Successfully Deleted");
       }
       catch (Exception e)
       {
