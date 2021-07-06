@@ -90,7 +90,8 @@ namespace DaNetwork.Server.Repositories
 
     internal void DeleteComment(int commentId)
     {
-      throw new NotImplementedException();
+      string sql = "DELETE FROM comments WHERE id = @commentId LIMIT 1;";
+      _db.Execute(sql, new{commentId});
     }
   }
 }
