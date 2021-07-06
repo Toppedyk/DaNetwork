@@ -30,6 +30,9 @@ namespace DaNetwork.Server.Services
     internal Like CreateLike(Like l)
     {
       Post post = _repoPost.getPostById(l.PostId);
+      if(post== null){
+        throw new Exception("Invalid ID");
+      }
       post.Likes++;
       _repoPost.UpdatePost(post);
       return _repo.CreateLike(l);
