@@ -38,7 +38,13 @@ namespace DaNetwork.Server.Repositories
 
     internal Like CreateLike(Like l)
     {
-      throw new NotImplementedException();
+      string sql = @"
+      INSERT INTO
+      likes(postId, creatorId)
+      VALUES(@PostId, @CreatorId);
+      SELECT LAST_INSERT_ID();";
+      l.Id = _db.ExecuteScalar<int>(sql, l);
+      return l;
     }
 
     internal Like getLikeById(int likeId)
