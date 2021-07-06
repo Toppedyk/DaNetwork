@@ -15,5 +15,10 @@ namespace DaNetwork.Server.Repositories
     {
       throw new NotImplementedException();
     }
+
+    internal Like CreateLike(Like l)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

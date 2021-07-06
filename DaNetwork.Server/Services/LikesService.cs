@@ -9,9 +9,12 @@ namespace DaNetwork.Server.Services
   {
 
     private readonly LikesRepository _repo;
-public LikesService(LikesRepository repo)
+    private readonly PostsRepository _repoPost;
+
+    public LikesService(LikesRepository repo, PostsRepository repoPost)
     {
       _repo = repo;
+      _repoPost = repoPost;
     }
 
     internal IEnumerable<Like> GetLikesByProfileId(string id)
@@ -26,10 +29,13 @@ public LikesService(LikesRepository repo)
 
     internal Like CreateLike(Like l)
     {
-      throw new NotImplementedException();
+      Post post = _repoPost.getPostById(l.PostId);
+      post.Likes++;
+      _repoPost.UpdatePost(post);
+      return _repo.CreateLike(l);
     }
 
-    internal void DeleteLike(int id1, string id2)
+    internal void DeleteLike(int postId, string userId)
     {
       throw new NotImplementedException();
     }
