@@ -20,5 +20,15 @@ namespace DaNetwork.Server.Repositories
     {
       throw new NotImplementedException();
     }
+
+    internal Like getLikeById(int likeId)
+    {
+      throw new NotImplementedException();
+    }
+
+    internal void DeleteLike(int likeId)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

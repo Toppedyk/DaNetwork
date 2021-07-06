@@ -35,9 +35,20 @@ namespace DaNetwork.Server.Services
       return _repo.CreateLike(l);
     }
 
-    internal void DeleteLike(int postId, string userId)
+    internal void DeleteLike(int likeId, string userId)
     {
-      throw new NotImplementedException();
+      Like like = _repo.getLikeById(likeId);
+      if(like == null){
+        throw new Exception("Invalid ID");
+      }
+      Post post = _repoPost.getPostById(like.PostId);
+      if(post== null){
+        throw new Exception("Invalid ID");
+      }
+      post.Likes--;
+      _repoPost.UpdatePost(post);
+
+      _repo.DeleteLike(likeId);
     }
   }
 }
