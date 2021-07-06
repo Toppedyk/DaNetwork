@@ -54,7 +54,7 @@ namespace DaNetwork.Server.Repositories
       c.*,
       a.*
       FROM comments c
-      JOIN accounts ON a.id = c.creatorId
+      JOIN accounts a ON a.id = c.creatorId
       WHERE c.postId = @id;";
       return _db.Query<Comment,Profile,Comment>(sql,(c,a)=>{
         c.Creator = a;
@@ -64,7 +64,17 @@ namespace DaNetwork.Server.Repositories
 
     internal Comment GetCommentById(int id)
     {
-      throw new NotImplementedException();
+      string sql=@"
+      SELECT 
+      c.*,
+      a.*
+      FROM comments c
+      JOIN accounts a ON a.id = c.creatorId
+      WHERE c.id = @id;";
+      return _db.Query<Comment, Profile, Comment>(sql,(c,a)=>{
+        c.Creator = a;
+        return c;
+      },new{id}).FirstOrDefault();
     }
 
     internal Comment CreateComment(Comment c)
