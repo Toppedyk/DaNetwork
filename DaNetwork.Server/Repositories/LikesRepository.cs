@@ -28,7 +28,12 @@ namespace DaNetwork.Server.Repositories
 
     internal IEnumerable<Like> GetLikesByPostId(int id)
     {
-      throw new NotImplementedException();
+      string sql = @"
+      SELECT
+      l.*
+      FROM likes l
+      WHERE l.postId = @id;";
+      return _db.Query<Like>(sql, new{id}).ToList();
     }
 
     internal Like CreateLike(Like l)
