@@ -49,12 +49,18 @@ namespace DaNetwork.Server.Repositories
 
     internal Like getLikeById(int likeId)
     {
-      throw new NotImplementedException();
+      string sql = @"
+      SELECT
+      l.*
+      FROM likes l
+      WHERE l.id = @likeId;";
+      return _db.Query<Like>(sql, new{likeId}).FirstOrDefault();
     }
 
     internal void DeleteLike(int likeId)
     {
-      throw new NotImplementedException();
+      string sql = "DELETE FROM likes WHERE id = @likeId LIMIT 1;";
+      _db.Execute(sql, new{likeId});
     }
   }
 }
