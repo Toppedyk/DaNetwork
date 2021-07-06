@@ -49,7 +49,17 @@ namespace DaNetwork.Server.Repositories
 
     internal IEnumerable<Comment> GetCommentsByPostId(int id)
     {
-      throw new NotImplementedException();
+      string sql=@"
+      SELECT
+      c.*,
+      a.*
+      FROM comments c
+      JOIN accounts ON a.id = c.creatorId
+      WHERE c.postId = @id;";
+      return _db.Query<Comment,Profile,Comment>(sql,(c,a)=>{
+        c.Creator = a;
+        return c;
+      }, new{id}).ToList();
     }
 
     internal Comment GetCommentById(int id)
