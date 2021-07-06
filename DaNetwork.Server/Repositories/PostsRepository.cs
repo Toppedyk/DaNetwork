@@ -66,7 +66,7 @@ namespace DaNetwork.Server.Repositories
       string sql = @"
       INSERT INTO 
       posts(body, imgUrl, likes)
-      VALUES(@Body, @ImgUrl, @Likes);
+      VALUES(@Body, @ImgUrl, 0);
       SELECT LAST_INSERT_ID();";
       p.Id = _db.ExecuteScalar<int>(sql,p);
       return p;
