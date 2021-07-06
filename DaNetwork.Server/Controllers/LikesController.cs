@@ -26,5 +26,23 @@ namespace DaNetwork.Server.Controllers
       _serviceLike = serviceLike;
     }
 
+
+    [HttpPost]
+    [Authorize]
+    public async Task<ActionResult<Like>> CreateLike([FromBody] Like l){
+      try
+      {
+          Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+          l.CreatorId = userInfo.Id;
+
+          Like like = _serviceLike.CreateLike(l);
+          return Ok(like);
+      }
+      catch (Exception e)
+      {
+          return BadRequest(e.Message);
+      }
+    }
+
   }
 }
