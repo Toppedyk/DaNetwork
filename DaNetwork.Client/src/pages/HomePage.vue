@@ -8,8 +8,29 @@
 </template>
 
 <script>
+import { computed, onMounted, reactive } from '@vue/runtime-core'
+import { AppState } from '../AppState'
+import Notification from '../utils/Notification'
+import postsService from '../services/PostsService'
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    const state = reactive({
+      account: computed(() => AppState.account),
+      posts: computed(() => AppState.posts)
+    })
+
+    onMounted(async() => {
+      try {
+        await postsService.getAllPosts()
+      } catch (error) {
+        Notification.toast('Error: ' + error, 'error')
+      }
+    })
+    return {
+      state
+    }
+  }
 }
 </script>
 
