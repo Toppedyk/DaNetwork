@@ -12,5 +12,10 @@ class PostsService {
     const res = await api.get(`api/posts/${id}`)
     AppState.activePost = res.data
   }
+
+  async getPostsByAccountId(id) {
+    const res = await api.get(`api/profiles/${id}/posts`)
+    AppState.accountPosts = res.data.reverse()
+  }
 }
 export const postsService = new PostsService()
