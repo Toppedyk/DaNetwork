@@ -29,5 +29,11 @@ class PostsService {
     this.getAllPosts()
     this.getPostsByAccountId(AppState.account.id)
   }
+
+  async editPost(post) {
+    await api.put(`api/posts/${post.id}`, post)
+    this.getAllPosts()
+    this.getPostsByAccountId(AppState.account.id)
+  }
 }
 export const postsService = new PostsService()
