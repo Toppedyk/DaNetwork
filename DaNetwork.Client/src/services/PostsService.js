@@ -23,5 +23,11 @@ class PostsService {
     await this.getAllPosts()
     await this.getPostsByAccountId(`api/profiles/${post.creatorId}/posts`)
   }
+
+  async deletePost(id) {
+    await api.delete(`api/posts/${id}`)
+    this.getAllPosts()
+    this.getPostsByAccountId(AppState.account.id)
+  }
 }
 export const postsService = new PostsService()
