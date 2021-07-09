@@ -11,5 +11,10 @@ class CommentsService {
     const res = await api.get(`api/comments/${id}`)
     AppState.activeComment = res.data
   }
+
+  async createComment(comment) {
+    await api.post('api/comments', comment)
+    this.getCommentsByPostId(comment.postId)
+  }
 }
 export const commentsService = new CommentsService()
