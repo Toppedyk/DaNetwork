@@ -16,5 +16,10 @@ class CommentsService {
     await api.post('api/comments', comment)
     this.getCommentsByPostId(comment.postId)
   }
+
+  async deleteComment(id, postId) {
+    await api.delete(`api/comments/${id}`)
+    this.getCommentsByPostId(postId)
+  }
 }
 export const commentsService = new CommentsService()
