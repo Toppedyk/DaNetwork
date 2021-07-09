@@ -6,5 +6,9 @@ class CommentsService {
     const res = await api.get(`api/posts/${id}/comments`)
     AppState.comments = res.data.reverse()
   }
+
+  async getCommentById(id) {
+    const res = await api.get(`api/comments/${id}`)
+  }
 }
 export const commentsService = new CommentsService()

@@ -8,5 +8,6 @@ export const AppState = reactive({
   comments: [],
   accountLikes: [],
   accountPosts: [],
-  activePost: {}
+  activePost: {},
+  activeComment: {}
 })
